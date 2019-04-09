@@ -44,4 +44,36 @@ function onInputKeyDown(event) {
 
 inputBox.addEventListener('keydown', onInputKeyDown)
 
+// yellow p tag << using anonymous functions (ES6 Javascript):
+
+const p = document.getElementById('yellow')
+
+function onYellowClick(event) {
+}
+
+p.addEventListener('click', (event) => {
+  console.log(event)
+  p.style.backgroundColor = 'yellow'
+})
+
+// button actions: adding a new element to the page using appendChild to put it on the body of the document
+
+const button = document.getElementById('plus')
+
+button.addEventListener('click', (event) => {
+  const newP = document.createElement('p')
+  newP.innerHTML = 'WELL LOOK AT YOU.'
+  document.body.appendChild(newP)
+})
+
+// div stuff. make every div within "divs" do the same thing. Event bubbling! Can be a common bug. Need to add stopPropagation to the loop ("for..") if the action should only be applied to a single, nested div  
+
+const divs = document.querySelectorAll('div')
+
+for (let div of divs) {
+  div.addEventListener('click', (event) => {
+    console.log(event)
+    event.stopPropagation()
+  })
+}
 
